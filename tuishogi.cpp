@@ -61,7 +61,7 @@ namespace osl {
       return true;
     }
 
-    const Move op_move=record::csa::strToMove(line, state);
+    const Move op_move = record::csa::strToMove(line, state);
     if (! state.isValidMove(op_move)) {
       return true;
     }
