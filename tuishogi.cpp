@@ -37,13 +37,11 @@ main()
 
   NumEffectState state((SimpleState(HIRATE)));
   std::string line;
-  while (true)
-  {
+  while (true) {
     // 自分の手を指す
     MoveVector moves;
     LegalMoves::generate(state, moves);
-    if (moves.empty())
-    {
+    if (moves.empty()) {
       std::cerr << "make masita\n";
       break;
     }
@@ -55,19 +53,20 @@ main()
     csaShow(std::cout, my_move);
     std::cout << "\n";
 
-    if (isMated(state))
-    {
+    if (isMated(state)) {
       std::cerr << "checkmate!";
       break;
     }
 
     // 相手の指手を読みこむ
-    if (! std::getline(std::cin, line))
+    if (! std::getline(std::cin, line)) {
       break;
+    }
 
     const Move op_move=record::csa::strToMove(line, state);
-    if (! state.isValidMove(op_move))
+    if (! state.isValidMove(op_move)) {
       break;
+    }
 
     state.makeMove(op_move);
 
