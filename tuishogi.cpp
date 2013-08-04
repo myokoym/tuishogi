@@ -51,6 +51,27 @@ namespace osl {
 
     return false;
   }
+
+  bool
+  playerOperate(std::string& line, NumEffectState& state)
+  {
+    if (! std::getline(std::cin, line)) {
+      return true;
+    }
+
+    const Move op_move=record::csa::strToMove(line, state);
+    if (! state.isValidMove(op_move)) {
+      return true;
+    }
+
+    state.makeMove(op_move);
+
+    showState(state);
+    csaShow(std::cout, op_move);
+    std::cout << "\n";
+
+    return false;
+  }
 }
 
 int
@@ -68,20 +89,9 @@ main()
       break;
     }
 
-    // 相手の指手を読みこむ
-    if (! std::getline(std::cin, line)) {
+    bool failed = playerOperate(line, state);
+    if (failed) {
       break;
     }
-
-    const Move op_move=record::csa::strToMove(line, state);
-    if (! state.isValidMove(op_move)) {
-      break;
-    }
-
-    state.makeMove(op_move);
-
-    showState(state);
-    csaShow(std::cout, op_move);
-    std::cout << "\n";
   }
 }
