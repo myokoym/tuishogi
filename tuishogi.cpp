@@ -26,6 +26,31 @@ namespace osl {
   {
     return state.inCheck(alt(state.turn()));
   }
+
+  bool
+  computerOperate(NumEffectState& state)
+  {
+    MoveVector moves;
+    LegalMoves::generate(state, moves);
+    if (moves.empty()) {
+      std::cerr << "make masita\n";
+      return true;
+    }
+    const Move my_move = selectMove(state, moves);
+    assert(state.isValidMove(my_move));
+    state.makeMove(my_move);
+
+    showState(state);
+    csaShow(std::cout, my_move);
+    std::cout << "\n";
+
+    if (isMated(state)) {
+      std::cerr << "checkmate!";
+      return true;
+    }
+
+    return false;
+  }
 }
 
 int
@@ -38,23 +63,8 @@ main()
   NumEffectState state((SimpleState(HIRATE)));
   std::string line;
   while (true) {
-    // 自分の手を指す
-    MoveVector moves;
-    LegalMoves::generate(state, moves);
-    if (moves.empty()) {
-      std::cerr << "make masita\n";
-      break;
-    }
-    const Move my_move = selectMove(state, moves);
-    assert(state.isValidMove(my_move));
-    state.makeMove(my_move);
-
-    showState(state);
-    csaShow(std::cout, my_move);
-    std::cout << "\n";
-
-    if (isMated(state)) {
-      std::cerr << "checkmate!";
+    bool ended = computerOperate(state);
+    if (ended) {
       break;
     }
 
