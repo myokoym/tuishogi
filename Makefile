@@ -1,10 +1,10 @@
 GXX = g++
 LIBS = -losl
-SOURCES = tuishogi.cpp
+SRCS = tuishogi.cpp
 DEST_DIR = bin
 DEST_NAME = tuishogi
 
-tuishogi: $(SOURCES)
-	$(GXX) -o $(DEST_DIR)/$(DEST_NAME) $(SOURCES) $(LIBS)
+tuishogi: $(SRCS)
+	$(GXX) -o $(DEST_DIR)/$(DEST_NAME) $(SRCS) $(LIBS)
 
 default: tuishogi
