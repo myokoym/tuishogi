@@ -4,7 +4,7 @@ SOURCES = tuishogi.cpp
 DEST_DIR = bin
 DEST_NAME = tuishogi
 
-tuishogi: tuishogi.cpp
+tuishogi: $(SOURCES)
 	$(GXX) -o $(DEST_DIR)/$(DEST_NAME) $(SOURCES) $(LIBS)
 
 default: tuishogi
