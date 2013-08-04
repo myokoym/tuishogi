@@ -53,8 +53,10 @@ namespace osl {
   }
 
   bool
-  playerOperate(std::string& line, NumEffectState& state)
+  playerOperate(NumEffectState& state)
   {
+    std::string line;
+
     if (! std::getline(std::cin, line)) {
       return true;
     }
@@ -82,14 +84,13 @@ main()
   srandom(time(0));
 
   NumEffectState state((SimpleState(HIRATE)));
-  std::string line;
   while (true) {
     bool ended = computerOperate(state);
     if (ended) {
       break;
     }
 
-    bool failed = playerOperate(line, state);
+    bool failed = playerOperate(state);
     if (failed) {
       break;
     }
