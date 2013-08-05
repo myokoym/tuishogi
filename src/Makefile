@@ -1,7 +1,7 @@
 GXX = g++
 LIBS = -losl
 SRCS = tuishogi.cpp
-DEST_DIR = bin
+DEST_DIR = ../bin
 DEST_NAME = tuishogi
 
 tuishogi: $(SRCS)
