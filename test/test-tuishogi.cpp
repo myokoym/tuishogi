@@ -32,9 +32,7 @@ P9+KY+KE+GI+KI+OU+KI+GI+KE+KY\n\
 
   // TODO assert it as a std::string
   std::string str = string_out.str();
-  int len = str.length();
-  char* actual = new char[len+1];
-  memcpy(actual, str.c_str(), len+1);
+  const char* actual = str.c_str();
 
   // Assert
   cut_assert_equal_string(expected, actual);
