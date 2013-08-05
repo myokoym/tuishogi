@@ -1,5 +1,5 @@
 *.o
-bin/tuishogi
+tuishogi
 core
 *.la
 *.lo
