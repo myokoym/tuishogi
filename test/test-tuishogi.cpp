@@ -4,6 +4,43 @@
 namespace tuishogi {
 
 void
+test_showState(void)
+{
+  // Arrange
+  using namespace osl;
+  std::stringbuf  string_out;
+  std::streambuf* std_out = std::cout.rdbuf(&string_out);
+  NumEffectState state((SimpleState(HIRATE)));
+  const char* expected = "\
+P1-KY-KE-GI-KI-OU-KI-GI-KE-KY\n\
+P2 * -HI *  *  *  *  * -KA * \n\
+P3-FU-FU-FU-FU-FU-FU-FU-FU-FU\n\
+P4 *  *  *  *  *  *  *  *  * \n\
+P5 *  *  *  *  *  *  *  *  * \n\
+P6 *  *  *  *  *  *  *  *  * \n\
+P7+FU+FU+FU+FU+FU+FU+FU+FU+FU\n\
+P8 * +KA *  *  *  *  * +HI * \n\
+P9+KY+KE+GI+KI+OU+KI+GI+KE+KY\n\
++\n\
+\n";
+
+  // Act
+  showState(state);
+
+  std::cout << std::flush;
+  std::cout.rdbuf(std_out);
+
+  // TODO assert it as a std::string
+  std::string str = string_out.str();
+  int len = str.length();
+  char* actual = new char[len+1];
+  memcpy(actual, str.c_str(), len+1);
+
+  // Assert
+  cut_assert_equal_string(expected, actual);
+}
+
+void
 test_isMated(void)
 {
   using namespace osl;
