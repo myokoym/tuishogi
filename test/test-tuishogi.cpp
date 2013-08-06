@@ -61,4 +61,32 @@ test_computerOperate(void)
   cut_assert_false(ended);
 }
 
+void
+test_playerOperate_valid(void)
+{
+  using namespace osl;
+  // TODO cleanup
+  std::stringbuf  string_out;
+  std::streambuf* std_out = std::cout.rdbuf(&string_out);
+  NumEffectState state((SimpleState(HIRATE)));
+  bool failed = playerOperate(state, "+7776FU");
+  std::cout << std::flush;
+  std::cout.rdbuf(std_out);
+  cut_assert_false(failed);
+}
+
+void
+test_playerOperate_invalid(void)
+{
+  using namespace osl;
+  // TODO cleanup
+  std::stringbuf  string_out;
+  std::streambuf* std_out = std::cout.rdbuf(&string_out);
+  NumEffectState state((SimpleState(HIRATE)));
+  bool failed = playerOperate(state, "+5251FU");
+  std::cout << std::flush;
+  std::cout.rdbuf(std_out);
+  cut_assert_true(failed);
+}
+
 }  // namespace tuishogi
