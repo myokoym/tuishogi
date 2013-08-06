@@ -3,11 +3,12 @@
 
 namespace tuishogi {
 
+  using namespace osl;
+
   void
   test_showState(void)
   {
     // Arrange
-    using namespace osl;
     std::stringbuf  string_out;
     std::streambuf* std_out = std::cout.rdbuf(&string_out);
     NumEffectState state((SimpleState(HIRATE)));
@@ -41,7 +42,6 @@ P9+KY+KE+GI+KI+OU+KI+GI+KE+KY\n\
   void
   test_isMated(void)
   {
-    using namespace osl;
     NumEffectState state((SimpleState(HIRATE)));
     bool mated = isMated(state);
     cut_assert_false(mated);
@@ -50,7 +50,6 @@ P9+KY+KE+GI+KI+OU+KI+GI+KE+KY\n\
   void
   test_computerOperate(void)
   {
-    using namespace osl;
     // TODO cleanup
     std::stringbuf  string_out;
     std::streambuf* std_out = std::cout.rdbuf(&string_out);
@@ -65,7 +64,6 @@ P9+KY+KE+GI+KI+OU+KI+GI+KE+KY\n\
   test_playerOperate_valid(void)
   {
     // Arrange
-    using namespace osl;
     std::stringbuf  string_out;
     std::streambuf* std_out = std::cout.rdbuf(&string_out);
     NumEffectState state((SimpleState(HIRATE)));
@@ -101,7 +99,6 @@ P9+KY+KE+GI+KI+OU+KI+GI+KE+KY\n\
   void
   test_playerOperate_invalid_movement(void)
   {
-    using namespace osl;
     // TODO cleanup
     std::stringbuf  string_out;
     std::streambuf* std_out = std::cout.rdbuf(&string_out);
@@ -115,7 +112,6 @@ P9+KY+KE+GI+KI+OU+KI+GI+KE+KY\n\
   void
   test_playerOperate_invalid_format(void)
   {
-    using namespace osl;
     // TODO cleanup
     std::stringbuf  string_out;
     std::streambuf* std_out = std::cout.rdbuf(&string_out);
