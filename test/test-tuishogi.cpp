@@ -47,4 +47,13 @@ test_isMated(void)
   cut_assert_false(mated);
 }
 
+void
+test_computerOperate(void)
+{
+  using namespace osl;
+  NumEffectState state((SimpleState(HIRATE)));
+  bool ended = computerOperate(state);
+  cut_assert_false(ended);
+}
+
 }  // namespace tuishogi
