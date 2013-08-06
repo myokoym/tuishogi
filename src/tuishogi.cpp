@@ -56,6 +56,11 @@ namespace osl {
   bool
   playerOperate(NumEffectState& state, std::string line)
   {
+    if (line.length() != 7) {
+      std::cout << "error: invalid format." << std::endl;
+      return true;
+    }
+
     Move op_move;
     try {
       op_move = record::csa::strToMove(line, state);

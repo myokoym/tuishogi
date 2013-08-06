@@ -112,4 +112,18 @@ test_playerOperate_invalid_movement(void)
   cut_assert_true(failed);
 }
 
+void
+test_playerOperate_invalid_format(void)
+{
+  using namespace osl;
+  // TODO cleanup
+  std::stringbuf  string_out;
+  std::streambuf* std_out = std::cout.rdbuf(&string_out);
+  NumEffectState state((SimpleState(HIRATE)));
+  bool failed = playerOperate(state, "");
+  std::cout << std::flush;
+  std::cout.rdbuf(std_out);
+  cut_assert_true(failed);
+}
+
 }  // namespace tuishogi
