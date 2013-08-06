@@ -34,7 +34,7 @@ namespace osl {
     MoveVector moves;
     LegalMoves::generate(state, moves);
     if (moves.empty()) {
-      std::cerr << "make masita\n";
+      std::cerr << "You Win!\n";
       return true;
     }
     const Move my_move = selectMove(state, moves);
@@ -46,7 +46,7 @@ namespace osl {
     std::cout << "\n";
 
     if (isMated(state)) {
-      std::cerr << "checkmate!";
+      std::cerr << "You Lose...";
       return true;
     }
 
