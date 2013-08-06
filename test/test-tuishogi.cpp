@@ -99,7 +99,7 @@ P9+KY+KE+GI+KI+OU+KI+GI+KE+KY\n\
 }
 
 void
-test_playerOperate_invalid(void)
+test_playerOperate_invalid_movement(void)
 {
   using namespace osl;
   // TODO cleanup
