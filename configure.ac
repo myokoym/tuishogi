@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 
-AC_INIT(tuishogi, 0.0.1, myokoym@gmail.com)
+AC_INIT(tuishogi, 0.0.2, myokoym@gmail.com)
 AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_HEADER([src/config.h])
 
