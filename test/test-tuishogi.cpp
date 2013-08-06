@@ -51,8 +51,13 @@ void
 test_computerOperate(void)
 {
   using namespace osl;
+  // TODO cleanup
+  std::stringbuf  string_out;
+  std::streambuf* std_out = std::cout.rdbuf(&string_out);
   NumEffectState state((SimpleState(HIRATE)));
   bool ended = computerOperate(state);
+  std::cout << std::flush;
+  std::cout.rdbuf(std_out);
   cut_assert_false(ended);
 }
 
