@@ -53,14 +53,8 @@ namespace osl {
   }
 
   bool
-  playerOperate(NumEffectState& state)
+  playerOperate(NumEffectState& state, std::string line)
   {
-    std::string line;
-
-    if (! std::getline(std::cin, line)) {
-      return true;
-    }
-
     const Move op_move = record::csa::strToMove(line, state);
     if (! state.isValidMove(op_move)) {
       return true;
@@ -73,6 +67,16 @@ namespace osl {
     std::cout << "\n";
 
     return false;
+  }
+
+  std::string
+  inputLine(void)
+  {
+    std::string line;
+    if (! std::getline(std::cin, line)) {
+      return NULL;
+    }
+    return line;
   }
 }
 
@@ -90,7 +94,8 @@ main()
       break;
     }
 
-    bool failed = playerOperate(state);
+    std::string line = inputLine();
+    bool failed = playerOperate(state, line);
     if (failed) {
       break;
     }
