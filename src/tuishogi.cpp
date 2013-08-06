@@ -2,6 +2,7 @@
 #include "osl/effect_util/effectUtil.h"
 #include "osl/container/moveVector.h"
 #include "osl/record/csa.h"
+#include "osl/record/csaIOError.h"
 #include "osl/move_generator/legalMoves.h"
 #include <boost/random/mersenne_twister.hpp>
 #include <string>
@@ -55,7 +56,14 @@ namespace osl {
   bool
   playerOperate(NumEffectState& state, std::string line)
   {
-    const Move op_move = record::csa::strToMove(line, state);
+    Move op_move;
+    try {
+      op_move = record::csa::strToMove(line, state);
+    } catch (const std::runtime_error& e) {
+      std::cout << e.what() << std::endl;
+      return true;
+    }
+
     if (! state.isValidMove(op_move)) {
       return true;
     }
