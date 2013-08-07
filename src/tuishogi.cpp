@@ -8,7 +8,9 @@
 #include <string>
 #include <sys/time.h>
 
-namespace osl {
+namespace tuishogi {
+  using namespace osl;
+
   void
   showState(const NumEffectState& state)
   {
@@ -112,7 +114,7 @@ namespace osl {
 int
 main()
 {
-  using namespace osl;
+  using namespace tuishogi;
 
   srandom(time(0));
 
