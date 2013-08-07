@@ -56,17 +56,33 @@ namespace osl {
   bool
   playerOperate(NumEffectState& state, std::string line)
   {
-    if (line.length() != 7) {
+    Move op_move;
+    if (line.length() == 4) {
+      MoveVector moves;
+      LegalMoves::generate(state, moves);
+      int i;
+      for (i = 0; i < moves.size(); i++) {
+        Move m = moves[i];
+        Square from = m.from();
+        Square to = m.to();
+        if (((int)line[0] - (int)'0') == from.x() &&
+            ((int)line[1] - (int)'0') == from.y() &&
+            ((int)line[2] - (int)'0') == to.x() &&
+            ((int)line[3] - (int)'0') == to.y()) {
+          op_move = m;
+          break;
+        }
+      }
+    } else if (line.length() != 7) {
       std::cout << "error: invalid format." << std::endl;
       return true;
-    }
-
-    Move op_move;
+    } else {
     try {
       op_move = record::csa::strToMove(line, state);
     } catch (const std::runtime_error& e) {
       std::cout << e.what() << std::endl;
       return true;
+    }
     }
 
     if (! state.isValidMove(op_move)) {
