@@ -77,12 +77,12 @@ namespace osl {
       std::cout << "error: invalid format." << std::endl;
       return true;
     } else {
-    try {
-      op_move = record::csa::strToMove(line, state);
-    } catch (const std::runtime_error& e) {
-      std::cout << e.what() << std::endl;
-      return true;
-    }
+      try {
+        op_move = record::csa::strToMove(line, state);
+      } catch (const std::runtime_error& e) {
+        std::cout << e.what() << std::endl;
+        return true;
+      }
     }
 
     if (! state.isValidMove(op_move)) {
