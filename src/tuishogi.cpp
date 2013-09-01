@@ -1,9 +1,9 @@
-#include "osl/state/numEffectState.h"
-#include "osl/effect_util/effectUtil.h"
-#include "osl/container/moveVector.h"
-#include "osl/record/csa.h"
-#include "osl/record/csaIOError.h"
-#include "osl/move_generator/legalMoves.h"
+#include <osl/state/numEffectState.h>
+#include <osl/effect_util/effectUtil.h>
+#include <osl/container/moveVector.h>
+#include <osl/record/csa.h>
+#include <osl/record/csaIOError.h>
+#include <osl/move_generator/legalMoves.h>
 #include <boost/random/mersenne_twister.hpp>
 #include <string>
 #include <sys/time.h>
